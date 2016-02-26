@@ -1,8 +1,8 @@
 body {
   background: cornsilk;
-
   font-family: sans-serif;
 }
+
 
 .lane {
   display: inline-block;
@@ -65,6 +65,10 @@ body {
   color: white;
   background-color: rgba(0, 0, 0, 0);
   border: 0;
+}
+.add-note {
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
 }
 
 .notes {
