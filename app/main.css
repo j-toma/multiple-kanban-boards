@@ -1,8 +1,72 @@
 body {
   background: cornsilk;
-
   font-family: sans-serif;
 }
+
+.group {
+  display: inline-block;
+
+  margin: 1em;
+
+  background-color: #efefef;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+
+  min-width: 10em;
+  vertical-align: top;
+}
+
+.group-header {
+  overflow: auto;
+
+  padding: 1em;
+
+  color: #efefef;
+  background-color: #555;
+
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+.group-name {
+  float: left;
+}
+
+.group-add-lane {
+  float: left;
+
+  margin-right: 0.5em;
+}
+
+.group-delete {
+  float: right;
+
+  margin-left: 0.5em;
+
+  visibility: hidden;
+}
+
+.group-header:hover .group-delete {
+  visibility: visible;
+}
+
+.add-group, .group-add-note button {
+  cursor: pointer;
+
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+}
+
+.group-delete button {
+  padding: 0;
+
+  cursor: pointer;
+
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+}
+
 
 .lane {
   display: inline-block;
@@ -65,6 +129,10 @@ body {
   color: white;
   background-color: rgba(0, 0, 0, 0);
   border: 0;
+}
+.add-note {
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
 }
 
 .notes {

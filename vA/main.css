@@ -1,8 +1,72 @@
 body {
   background: cornsilk;
+
   font-family: sans-serif;
 }
 
+.board {
+  display: inline-block;
+
+  margin: 1em;
+
+  background-color: #efefef;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+
+  min-width: 10em;
+  vertical-align: top;
+}
+
+.board-header {
+  overflow: auto;
+
+  padding: 1em;
+
+  color: #efefef;
+  background-color: #555;
+
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
+
+.board-name {
+  float: left;
+}
+
+.board-add-lane {
+  float: left;
+
+  margin-right: 0.5em;
+}
+
+.board-delete {
+  float: right;
+
+  margin-left: 0.5em;
+
+  visibility: hidden;
+}
+
+.board-header:hover .board-delete {
+  visibility: visible;
+}
+
+.add-board, .board-add-note button {
+  cursor: pointer;
+
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+}
+
+.board-delete button {
+  padding: 0;
+
+  cursor: pointer;
+
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+}
 
 .lane {
   display: inline-block;
@@ -65,10 +129,6 @@ body {
   color: white;
   background-color: rgba(0, 0, 0, 0);
   border: 0;
-}
-.add-note {
-  background-color: #fdfdfd;
-  border: 1px solid #ccc;
 }
 
 .notes {

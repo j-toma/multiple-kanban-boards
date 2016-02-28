@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class Editable extends React.Component {
   render() {
     const {value, onEdit, onValueClick, editing, ...props} = this.props;
@@ -22,7 +23,6 @@ export default class Editable extends React.Component {
   };
   renderValue = () => {
     const onDelete = this.props.onDelete;
-
     return (
       <div onClick={this.props.onValueClick}>
         <span className="value">{this.props.value}</span>
@@ -42,7 +42,6 @@ export default class Editable extends React.Component {
   };
   finishEdit = (e) => {
     const value = e.target.value;
-
     if(this.props.onEdit) {
       this.props.onEdit(value);
     }

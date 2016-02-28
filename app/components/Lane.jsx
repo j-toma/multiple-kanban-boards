@@ -5,31 +5,12 @@ import NoteActions from '../actions/NoteActions';
 import NoteStore from '../stores/NoteStore';
 import LaneActions from '../actions/LaneActions';
 import Editable from './Editable.jsx';
-import {DropTarget} from 'react-dnd';
-import ItemTypes from '../constants/itemTypes';
 
-const noteTarget = {
-  hover(targetProps, monitor) {
-    const sourceProps = monitor.getItem();
-    const sourceId = sourceProps.id;
-
-    if(!targetProps.lane.notes.length) {
-      LaneActions.attachToLane({
-        laneId: targetProps.lane.id,
-        noteId: sourceId
-      });
-    }
-  }
-};
-
-@DropTarget(ItemTypes.NOTE, noteTarget, (connect) => ({
-  connectDropTarget: connect.dropTarget()
-}))
 export default class Lane extends React.Component {
   render() {
-    const {connectDropTarget, lane, ...props} = this.props;
+    const {lane, ...props} = this.props;
 
-    return connectDropTarget(
+    return (
       <div {...props}>
         <div className="lane-header" onClick={this.activateLaneEdit}>
           <div className="lane-add-note">
@@ -57,12 +38,10 @@ export default class Lane extends React.Component {
   }
   editNote(id, task) {
     // Don't modify if trying set an empty value
-    if(!task.trim()) {
+    if(!name.trim()) {
       NoteActions.update({id, editing: false});
-
       return;
     }
-
     NoteActions.update({id, task, editing: false});
   }
   addNote = (e) => {
@@ -86,19 +65,14 @@ export default class Lane extends React.Component {
   };
   editName = (name) => {
     const laneId = this.props.lane.id;
-
-    // Don't modify if trying set an empty value
     if(!name.trim()) {
       LaneActions.update({id: laneId, editing: false});
-
       return;
     }
-
     LaneActions.update({id: laneId, name, editing: false});
   };
   deleteLane = () => {
     const laneId = this.props.lane.id;
-
     LaneActions.delete(laneId);
   };
   activateLaneEdit = () => {

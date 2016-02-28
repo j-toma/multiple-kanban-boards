@@ -1,8 +1,8 @@
 import AltContainer from 'alt-container';
 import React from 'react';
-import Lanes from './Lanes.jsx';
-import LaneActions from '../actions/LaneActions';
-import LaneStore from '../stores/LaneStore';
+import Boards from './Boards.jsx';
+import BoardActions from '../actions/BoardActions';
+import BoardStore from '../stores/BoardStore';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
@@ -11,19 +11,19 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <button className="add-lane" onClick={this.addLane}>+</button>
+        <button className="add-board" onClick={this.addBoard}>+</button>
         <AltContainer
-          stores={[LaneStore]}
+          stores={[BoardStore]}
           inject={{
-            lanes: () => LaneStore.getState().lanes || []
+            boards: () => BoardStore.getState().boards || []
           }}
         >
-          <Lanes />
+          <Boards />
         </AltContainer>
       </div>
     );
   }
-  addLane() {
-    LaneActions.create({name: 'New lane'});
+  addBoard() {
+    BoardActions.create({name: 'Board'});
   }
 }
