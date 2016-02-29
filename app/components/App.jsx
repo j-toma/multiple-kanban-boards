@@ -3,7 +3,11 @@ import React from 'react';
 import Groups from './Groups.jsx';
 import GroupActions from '../actions/GroupActions';
 import GroupStore from '../stores/GroupStore';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
+
+@DragDropContext(HTML5Backend)
 export default class App extends React.Component {
   render() {
     return (
