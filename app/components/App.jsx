@@ -21,6 +21,6 @@ export default class App extends React.Component {
     );
   }
   addGroup() {
-    GroupActions.create({name: 'New group'});
+    GroupActions.create({name: 'Group'});
   }
 }

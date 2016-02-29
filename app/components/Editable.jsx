@@ -17,14 +17,12 @@ export default class Editable extends React.Component {
         (e) => e ? e.selectionStart = this.props.value.length : null
       }
       autoFocus={true}
-      onclick="this.select()"
       defaultValue={this.props.value}
       onBlur={this.finishEdit}
       onKeyPress={this.checkEnter} />;
   };
   renderValue = () => {
     const onDelete = this.props.onDelete;
-
     return (
       <div onClick={this.props.onValueClick}>
         <span className="value">{this.props.value}</span>
