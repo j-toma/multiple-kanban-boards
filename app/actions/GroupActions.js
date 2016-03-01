@@ -4,5 +4,6 @@ export default alt.generateActions(
   'update',
   'delete',
   'attachToGroup',
-  'detachFromGroup'
+  'detachFromGroup',
+  'move'
 );

@@ -5,13 +5,33 @@ import LaneActions from '../actions/LaneActions';
 import LaneStore from '../stores/LaneStore';
 import GroupActions from '../actions/GroupActions';
 import Editable from './Editable.jsx';
+import {DropTarget} from 'react-dnd';
+import ItemTypes from '../constants/itemTypes';
 
 
+const laneTarget = {
+  hover(targetProps, monitor) {
+    const targetId = targetProps.group.id;
+    const sourceProps = monitor.getItem();
+    const sourceId = sourceProps.id;
+
+    if(!targetProps.group.lanes.length) {
+      GroupActions.attachToGroup({
+        groupId: targetProps.group.id,
+        laneId: sourceId
+      });
+    }
+  }
+}
+
+@DropTarget(ItemTypes.LANE, laneTarget, (connect) => ({
+  connectDropTarget: connect.dropTarget()
+}))
 export default class Group extends React.Component {
   render() {
-    const {group, ...props} = this.props;
+    const {connectDropTarget, group, ...props} = this.props;
 
-    return (
+    return connectDropTarget(
       <div {...props}>
         <div className="group-header" onClick={this.activateGroupEdit}>
           <div className="group-add-lane">

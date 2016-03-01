@@ -15,6 +15,7 @@ class LaneStore {
   create(lane) {
     const lanes = this.lanes;
     lane.id = uuid.v4();
+    lane.type = 'lane';
     lane.notes = lane.notes || [];
     this.setState({
       lanes: lanes.concat(lane)

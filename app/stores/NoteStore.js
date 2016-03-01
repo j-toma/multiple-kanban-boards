@@ -13,6 +13,7 @@ class NoteStore {
   create(note) {
     const notes = this.notes;
     note.id = uuid.v4();
+    note.type = 'note';
     this.setState({
       notes: notes.concat(note)
     });
