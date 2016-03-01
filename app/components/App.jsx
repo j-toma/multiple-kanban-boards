@@ -1,8 +1,8 @@
 import AltContainer from 'alt-container';
 import React from 'react';
-import Groups from './Groups.jsx';
-import GroupActions from '../actions/GroupActions';
-import GroupStore from '../stores/GroupStore';
+import Boards from './Boards.jsx';
+import BoardActions from '../actions/BoardActions';
+import BoardStore from '../stores/BoardStore';
 import {DragDropContext} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
@@ -12,19 +12,19 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <button className="add-group" onClick={this.addGroup}>+</button>
+        <button className="add-board" onClick={this.addBoard}>+</button>
         <AltContainer
-          stores={[GroupStore]}
+          stores={[BoardStore]}
           inject={{
-            groups: () => GroupStore.getState().groups || []
+            boards: () => BoardStore.getState().boards || []
           }}
         >
-          <Groups />
+          <Boards />
         </AltContainer>
       </div>
     );
   }
-  addGroup() {
-    GroupActions.create({name: 'Group'});
+  addBoard() {
+    BoardActions.create({name: 'Board'});
   }
 }

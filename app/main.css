@@ -3,7 +3,7 @@ body {
   font-family: sans-serif;
 }
 
-.group {
+.board {
   display: inline-block;
 
   margin: 1em;
@@ -16,7 +16,7 @@ body {
   vertical-align: top;
 }
 
-.group-header {
+.board-header {
   overflow: auto;
 
   padding: 1em;
@@ -28,17 +28,17 @@ body {
   border-top-right-radius: 0.5em;
 }
 
-.group-name {
+.board-name {
   float: left;
 }
 
-.group-add-lane {
+.board-add-lane {
   float: left;
 
   margin-right: 0.5em;
 }
 
-.group-delete {
+.board-delete {
   float: right;
 
   margin-left: 0.5em;
@@ -46,18 +46,18 @@ body {
   visibility: hidden;
 }
 
-.group-header:hover .group-delete {
+.board-header:hover .board-delete {
   visibility: visible;
 }
 
-.add-group, .group-add-note button {
+.add-board, .board-add-note button {
   cursor: pointer;
 
   background-color: #fdfdfd;
   border: 1px solid #ccc;
 }
 
-.group-delete button {
+.board-delete button {
   padding: 0;
 
   cursor: pointer;

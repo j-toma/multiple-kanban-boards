@@ -3,7 +3,7 @@ export default alt.generateActions(
   'create',
   'update',
   'delete',
-  'attachToGroup',
-  'detachFromGroup',
+  'attachToBoard',
+  'detachFromBoard',
   'move'
 );

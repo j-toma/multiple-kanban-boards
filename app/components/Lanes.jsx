@@ -1,6 +1,6 @@
 import React from 'react';
 import Lane from './Lane.jsx';
-import GroupActions from '../actions/GroupActions';
+import BoardActions from '../actions/BoardActions';
 
 export default ({lanes}) => {
   return (
@@ -9,7 +9,7 @@ export default ({lanes}) => {
         className="lane"
         key={lane.id}
         lane={lane}
-        onMove={GroupActions.move}/>
+        onMove={BoardActions.move}/>
     )}</div>
   );
 }

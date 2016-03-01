@@ -3,7 +3,7 @@ import React from 'react';
 import Lanes from './Lanes.jsx';
 import LaneActions from '../actions/LaneActions';
 import LaneStore from '../stores/LaneStore';
-import GroupActions from '../actions/GroupActions';
+import BoardActions from '../actions/BoardActions';
 import Editable from './Editable.jsx';
 import {DropTarget} from 'react-dnd';
 import ItemTypes from '../constants/itemTypes';
@@ -11,13 +11,13 @@ import ItemTypes from '../constants/itemTypes';
 
 const laneTarget = {
   hover(targetProps, monitor) {
-    const targetId = targetProps.group.id;
+    const targetId = targetProps.board.id;
     const sourceProps = monitor.getItem();
     const sourceId = sourceProps.id;
 
-    if(!targetProps.group.lanes.length) {
-      GroupActions.attachToGroup({
-        groupId: targetProps.group.id,
+    if(!targetProps.board.lanes.length) {
+      BoardActions.attachToBoard({
+        boardId: targetProps.board.id,
         laneId: sourceId
       });
     }
@@ -27,29 +27,29 @@ const laneTarget = {
 @DropTarget(ItemTypes.LANE, laneTarget, (connect) => ({
   connectDropTarget: connect.dropTarget()
 }))
-export default class Group extends React.Component {
+export default class Board extends React.Component {
   render() {
-    const {connectDropTarget, group, ...props} = this.props;
+    const {connectDropTarget, board, ...props} = this.props;
 
     return connectDropTarget(
       <div {...props}>
-        <div className="group-header" onClick={this.activateGroupEdit}>
-          <div className="group-add-lane">
+        <div className="board-header" onClick={this.activateBoardEdit}>
+          <div className="board-add-lane">
             <button onClick={this.addLane}>+</button>
           </div>
           <Editable
-            className="group-name"
-            editing={group.editing}
-            value={group.name}
+            className="board-name"
+            editing={board.editing}
+            value={board.name}
             onEdit={this.editName} />
-          <div className="group-delete">
-            <button onClick={this.deleteGroup}>x</button>
+          <div className="board-delete">
+            <button onClick={this.deleteBoard}>x</button>
           </div>
         </div>
         <AltContainer
           stores={[LaneStore]}
           inject={{
-            lanes: () => LaneStore.getLanesByIds(group.lanes)
+            lanes: () => LaneStore.getLanesByIds(board.lanes)
           }}
         >
           <Lanes />
@@ -67,11 +67,11 @@ export default class Group extends React.Component {
   // }
   addLane = (e) => {
     e.stopPropagation();
-    const groupId = this.props.group.id; 
+    const boardId = this.props.board.id; 
     const lane = LaneActions.create({name: 'Lane'});
-    GroupActions.attachToGroup({
+    BoardActions.attachToBoard({
       laneId: lane.id,
-      groupId
+      boardId
     });
   };
   // deleteLane = (laneId, e) => {
@@ -82,20 +82,20 @@ export default class Group extends React.Component {
   //   LaneActions.delete(laneId);
   // };
   editName = (name) => {
-    const groupId = this.props.group.id;
+    const boardId = this.props.board.id;
     if(!name.trim()) {
-      GroupActions.updated({id: groupId, editing: false});
+      BoardActions.updated({id: boardId, editing: false});
       return;
     }
-    GroupActions.update({id: groupId, name, editing: false});
+    BoardActions.update({id: boardId, name, editing: false});
   };
-  deleteGroup = () => {
-    const groupId = this.props.group.id;
-    GroupActions.delete(groupId);
+  deleteBoard = () => {
+    const boardId = this.props.board.id;
+    BoardActions.delete(boardId);
   };
-  activateGroupEdit = () => {
-    const groupId = this.props.group.id;
-    GroupActions.update({id: groupId, editing: true});
+  activateBoardEdit = () => {
+    const boardId = this.props.board.id;
+    BoardActions.update({id: boardId, editing: true});
   };
   // activateLaneEdit(id) {
   //   LaneActions.update({id, editing: true});
