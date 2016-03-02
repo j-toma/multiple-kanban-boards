@@ -11,3 +11,4 @@ This version of the SurviveJS Kanban App adds:
 PERSONAL NOTES:
 vA --- CREATE, DELETE LANE FAIL WITH NO ERRORS
 vB --- LANES DONT DRAG
+vC --- POLLUTED LOCAL HOST 8080 + error about 'id' not defined in NoteStore (note mods were made here)

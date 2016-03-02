@@ -5,6 +5,5 @@ export default alt.generateActions(
   'delete',
   'attachToBoard',
   'detachFromBoard',
-  'moveLane',
-  'moveBoard'
+  'move'
 );

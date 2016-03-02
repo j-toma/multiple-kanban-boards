@@ -78,7 +78,6 @@ export default class Lane extends React.Component {
     ));
   }
   editNote(id, task) {
-    // Don't modify if trying set an empty value
     if(!task.trim()) {
       NoteActions.update({id, editing: false});
 
@@ -109,13 +108,10 @@ export default class Lane extends React.Component {
   editName = (name) => {
     const laneId = this.props.lane.id;
 
-    // Don't modify if trying set an empty value
     if(!name.trim()) {
       LaneActions.update({id: laneId, editing: false});
-
       return;
     }
-
     LaneActions.update({id: laneId, name, editing: false});
   };
   deleteLane = () => {

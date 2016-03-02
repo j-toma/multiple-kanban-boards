@@ -71,12 +71,14 @@ class BoardStore {
     this.setState({boards});
   }
   moveBoard({sourceId, targetId}) {
-
+    console.log(this.boards);
+    // const boards = this.boards.map(board => board.id);
     const boards = this.boards;
-    const sourceBoardIndex = boards.map(e => e.id).indexOf(sourceId);
-    const targetBoardIndex = boards.map(e => e.id).indexOf(targetId);
-    console.log('sourceBoardIndex = ', sourceBoardIndex);
-    console.log('targetBoardIndex = ', targetBoardIndex);
+    const sourceContainer = boards.filter(board => board.id)
+    const sourceBoardIndex = this.boards.indexOf(sourceId);
+    const targetBoardIndex = this.boards.indexOf(targetId);
+    // console.log('sourceBoardIndex = ', sourceBoardIndex, 'sourceProps = ', sourceId);
+    // console.log('targetBoardIndex = ', targetBoardIndex, 'targetProps = ', targetId);
 
     this.boards = update(boards, {
       $splice: [
@@ -86,16 +88,6 @@ class BoardStore {
     });
 
     this.setState({boards});
-
-    // TO GET ERROR USE THIS CODE
-    // const boardsClone = update(boards, {
-    //   $splice: [
-    //     [sourceBoardIndex, 1],
-    //     [targetBoardIndex, 0, sourceId]
-    //   ]
-    // });
-
-    // this.setState({boards: boardsClone});
   }
 }
 

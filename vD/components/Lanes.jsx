@@ -9,7 +9,7 @@ export default ({lanes}) => {
         className="lane"
         key={lane.id}
         lane={lane}
-        onMove={BoardActions.moveLane}/>
+        onMove={BoardActions.move}/>
     )}</div>
   );
 }
