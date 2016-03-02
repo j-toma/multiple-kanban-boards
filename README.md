@@ -1,14 +1,10 @@
-# multiple-kanban-boards
+<h1> multiple-kanban-boards </h1>
 
-so we should be working with containers:
-Isn't it redundant to have Lane and Notes?
+<p> This version of the SurviveJS Kanban App adds: 
+  <ul>
+    <li> Draggable Lanes </li>
+    <li> Boards (which contain Lanes) </li>
+    <li> Draggable Boards </li>
+  </ul>
+<p>
 
-This version of the SurviveJS Kanban App adds:
---Draggable Lanes
---Boards (which contain Lanes).
-
-
-PERSONAL NOTES:
-vA --- CREATE, DELETE LANE FAIL WITH NO ERRORS
-vB --- LANES DONT DRAG
-vC --- POLLUTED LOCAL HOST 8080 + error about 'id' not defined in NoteStore (note mods were made here)
