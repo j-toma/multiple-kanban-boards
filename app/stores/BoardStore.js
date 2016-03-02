@@ -78,14 +78,14 @@ class BoardStore {
     console.log('sourceBoardIndex = ', sourceBoardIndex);
     console.log('targetBoardIndex = ', targetBoardIndex);
 
-    this.boards = update(boards, {
+    const newBoards = update(boards, {
       $splice: [
         [sourceBoardIndex, 1],
-        [targetBoardIndex, 0, sourceId]
+        [targetBoardIndex, 0, boards[sourceBoardIndex]]
       ]
     });
 
-    this.setState({boards});
+    this.setState({boards: newBoards});
 
     // TO GET ERROR USE THIS CODE
     // const boardsClone = update(boards, {
