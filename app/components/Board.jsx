@@ -57,14 +57,6 @@ export default class Board extends React.Component {
       </div>
     );
   }
-  // editLane(newName) {
-  //   // Don't modify if trying set an empty value
-  //   if(!newName.trim()) {
-  //     return;
-  //   }
-
-  //   LaneActions.update({newName});
-  // }
   addLane = (e) => {
     e.stopPropagation();
     const boardId = this.props.board.id; 
@@ -74,13 +66,6 @@ export default class Board extends React.Component {
       boardId
     });
   };
-  // deleteLane = (laneId, e) => {
-  //   e.stopPropagation();
-  //   const groupId = this.props.group.id;
-
-  //   GroupActions.detachFromGoup({groupId, laneId});
-  //   LaneActions.delete(laneId);
-  // };
   editName = (name) => {
     const boardId = this.props.board.id;
     if(!name.trim()) {
@@ -97,7 +82,4 @@ export default class Board extends React.Component {
     const boardId = this.props.board.id;
     BoardActions.update({id: boardId, editing: true});
   };
-  // activateLaneEdit(id) {
-  //   LaneActions.update({id, editing: true});
-  // }
 }

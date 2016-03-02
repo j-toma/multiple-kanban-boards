@@ -47,14 +47,6 @@ class BoardStore {
     });
     this.setState({boards});
   }
-  detachFromBoard({laneId, noteId}) {
-    const boards = this.boards.map(board => {
-      if(board.id === boardId) {
-        board.notes = board.notes.filter(lane => lane !== laneId);
-      }
-    });
-    this.setState({boards});
-  }
   move({sourceId, targetId}) {
     const boards = this.boards;
     const sourceBoard = boards.filter(board => board.lanes.includes(sourceId))[0];
